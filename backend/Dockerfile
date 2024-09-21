@@ -6,8 +6,10 @@ WORKDIR /usr/src/app
 
 # Copy the package.json and package-lock.json to install dependencies
 # COPY package*.json ./
-COPY package.json /usr/src/app
-# RUN apk add --no-cache git
+# COPY package.json /usr/src/app
+COPY package.json .
+COPY package-lock.json .
+RUN apk add --no-cache git
 
 # Install dependencies
 RUN npm install

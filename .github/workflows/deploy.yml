@@ -35,7 +35,7 @@ jobs:
       #     tags: gaithriharidasss/backend-backend:latest
 
       - name: Build Docker image
-        run: docker build -t backend-backend:latest .
+        run: docker build -t backend-backend:latest ./backend/Dockerfile
 
       - name: Push Docker image to Docker Hub
         run: docker push backend-backend:latest

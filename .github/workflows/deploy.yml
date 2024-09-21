@@ -25,20 +25,14 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # # Build and push Docker image
-      # - name: Build and Push Docker image
-      #   uses: docker/build-push-action@v4
-      #   with:
-      #     context: .
-      #     file: ./backend/Dockerfile
-      #     push: true
-      #     tags: gaithriharidasss/backend-backend:latest
-
-      - name: Build Docker image
-        run: docker build -t backend-backend:latest ./backend/Dockerfile
-
-      - name: Push Docker image to Docker Hub
-        run: docker push backend-backend:latest
+      # Build and push Docker image
+      - name: Build and Push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: ./backend/Dockerfile
+          push: true
+          tags: gaithriharidasss/backend-backend:latest
 
       # Log in to Azure
       - name: Log in to Azure
@@ -52,8 +46,4 @@ jobs:
         with:
           app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
           images: gaithriharidasss/backend-backend:latest
-
-      # - name: Deploy to Azure App Service
-      #   run: |
-      #     az webapp create --resource-group eventManagementResource --plan ASP-eventManagementResource-aae9 --name myEventManagementSystem --deployment-container-image-name backend-backend:latest
 

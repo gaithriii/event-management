@@ -18,25 +18,20 @@ Pages:
 Users created so far:
 User                |   Password
 ---------------------------------
-temp@gmail.com      |   Password1
-temp1@gmail.com     |   Password1
-temp2@gmail.com     |   Password1
-temp3@gmail.com     |   Password1
+temp@gmail.com      |   temp1
 
-4. To run MongoDB in Docker:
-docker run -d \
-  --name mongodb \
-  -p 27017:27017 \
-  -v mongodbdata:/data/db \
-  mongo:latest
+4. Testing locally
+# Build the Docker containers
+docker-compose build
 
-  -d: Runs the container in detached mode (in the background).
-  --name mongodb: Names the container "mongodb".
-  -p 27017:27017: Maps port 27017 of your local machine to port 27017 in the container (MongoDB's default port).
-  -v mongodbdata:/data/db: Mounts a volume to persist MongoDB data so that it is saved even after the container stops.
+# Start the containers
+docker-compose up
 
-To check if MongoDB is running in the background: docker ps
+Run through the logs to ensure that backend is up and runing in registered port 3000 and mongoDB is running as well.
 
-5. To build and run backend in Docker Container
-To build backend on Docker: docker build -t event-management-backend .
-To run backend on Docker: docker run -d -p 3000:3000 event-management-backend
+1. Verify frontend is working:
+Navigate to frontend repo and run frontend code locally with command `npm start`.
+Navigate to browser and hit any of the following paths to ensure frontend is able to communicate with backend and mongoDB docker containers.
+
+2. Verify backend APIs are working via postman:
+Hit the backend APIs on Postman to see that the endpoints are working as expected and responding with appropriate responses.

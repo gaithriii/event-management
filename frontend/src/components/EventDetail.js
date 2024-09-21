@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { TextField, Button, Typography } from '@mui/material';
 import { getUserIdFromToken } from '../Utilities';
+import { useNavigate } from 'react-router-dom';
 
 function EventDetail() {
   const { id } = useParams();
@@ -10,30 +11,16 @@ function EventDetail() {
   const [event, setEvent] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [editDeleteRights, setEditDeleteRights] = useState(false);
+  const navigation = useNavigate();
 
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        // const response = await axios.get(`/api/events/${id}`);
-        // TODO: delete dummy data
-        const response = {
-          data: {
-            "_id": "66ebabc5b76b00ed9e054834",
-            "title": "t2",
-            "description": "d2",
-            "media": [
-                "uploads/a1c50f94013a132a6f8d375f23ae4976"
-            ],
-            "creator": "66eba5f6a9f6e3c13d25ddb7",
-            "attendees": ['66eba5f6a9f6e3c13d25ddb7', '1223'],
-            "__v": 0
-          }
-        }
+        const response = await axios.get(`/api/events/${id}`);
         setEvent(response.data);
         
         const userId = getUserIdFromToken();
         setUserId(userId);
-        console.log(`userId: ${userId}`);
 
         if (!userId) {
           alert('Error: No user ID found');
@@ -55,8 +42,8 @@ function EventDetail() {
     try {
       const response = await axios.delete(`/api/events/${id}`);
       if (response.status === 200) {
-        alert('Event deleted successfully');
-        // redirect to view all events page: :3000/
+        alert('Event deleted successfully. Redirecting you to Home.');
+        navigation('/');
       }
     } catch (error) {
       alert('Error deleting event: ' + error.response.data);
@@ -86,7 +73,6 @@ function EventDetail() {
 
   const updateEvent = async () => {
     try {
-      console.log('event', event)
       const response = await axios.put(`/api/events/${id}`, event, {
         headers: { 'Content-Type': 'application/json' }
       });
@@ -121,7 +107,7 @@ function EventDetail() {
         <Button variant="contained" style={{display: editDeleteRights ? "inline" : "none"}} onClick={editEvent}>Edit Event</Button>
       </div>
       <div style={{float: "right", width: "100%", marginBottom: "10px"}}>
-        <Button variant="outlined" style={{float: "right"}} onClick={attendEvent}>Attend Event</Button>
+        <Button variant="outlined" style={{display: !editDeleteRights ? "inline" : "none", float: "right"}} onClick={attendEvent}>Attend Event</Button>
       </div>
       <form onSubmit={onSubmit}>
         <TextField

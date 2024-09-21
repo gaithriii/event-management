@@ -19,7 +19,6 @@ function CreateEvent() {
     e.preventDefault();
 
     const userId = getUserIdFromToken();
-
     if (!userId) {
       alert('Error: No user ID found');
       return;
@@ -36,7 +35,6 @@ function CreateEvent() {
       await axios.post('/api/events/', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
-          // 'Authorization': `Bearer ${localStorage.getItem('token')}`,
           'user-id': userId,
         },
       });
@@ -64,7 +62,7 @@ function CreateEvent() {
   const backToHome = (e) => {
     e.preventDefault(); 
     
-    navigation('/')
+    navigation('/');
   }
 
   return (

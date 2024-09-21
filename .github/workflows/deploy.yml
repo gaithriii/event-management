@@ -30,7 +30,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./Dockerfile
+          file: ../../backend/Dockerfile
           push: true
           tags: gaithriharidasss/backend-backend:latest
 

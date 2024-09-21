@@ -22,3 +22,21 @@ temp@gmail.com      |   Password1
 temp1@gmail.com     |   Password1
 temp2@gmail.com     |   Password1
 temp3@gmail.com     |   Password1
+
+4. To run MongoDB in Docker:
+docker run -d \
+  --name mongodb \
+  -p 27017:27017 \
+  -v mongodbdata:/data/db \
+  mongo:latest
+
+  -d: Runs the container in detached mode (in the background).
+  --name mongodb: Names the container "mongodb".
+  -p 27017:27017: Maps port 27017 of your local machine to port 27017 in the container (MongoDB's default port).
+  -v mongodbdata:/data/db: Mounts a volume to persist MongoDB data so that it is saved even after the container stops.
+
+To check if MongoDB is running in the background: docker ps
+
+5. To build and run backend in Docker Container
+To build backend on Docker: docker build -t event-management-backend .
+To run backend on Docker: docker run -d -p 3000:3000 event-management-backend

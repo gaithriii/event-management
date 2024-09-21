@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost/event-management', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://mongodb:27017/event-management', { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

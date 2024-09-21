@@ -32,7 +32,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: event-management-backend
+          tags: gaithriharidasss/backend-backend:latest
 
       # Log in to Azure
       - name: Log in to Azure
@@ -45,5 +45,5 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
-          images: event-management-backend
+          images: gaithriharidasss/backend-backend:latest
 

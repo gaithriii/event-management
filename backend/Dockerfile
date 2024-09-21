@@ -5,14 +5,17 @@ FROM node:18
 WORKDIR /usr/src/app
 
 # Copy the package.json and package-lock.json to install dependencies
-COPY package*.json ./
+# COPY package*.json ./
 
 # Install dependencies
 ADD package.json /usr/src/app/package.json
 RUN npm install
 
+# copy codebase to docker codebase
+ADD . /usr/src/app
+
 # Copy the rest of the application code
-COPY . .
+# COPY . .
 
 # Expose the port that the app runs on
 EXPOSE 3000

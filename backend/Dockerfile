@@ -5,17 +5,11 @@ FROM node:18
 WORKDIR /usr/src/app
 
 # Copy the package.json and package-lock.json to install dependencies
-# COPY package*.json ./
-# COPY package.json /usr/src/app
-COPY ./package.json /usr/src/app
-# COPY ./package-lock.json /usr/src/app
+COPY package*.json .
 RUN apk add --no-cache git
 
 # Install dependencies
 RUN npm install
-
-# copy codebase to docker codebase
-# ADD . /usr/src/app
 
 # Copy the rest of the application code
 COPY . .

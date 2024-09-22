@@ -5,10 +5,10 @@ FROM node:18
 WORKDIR /usr/src/app
 
 # Copy the package.json and package-lock.json to install dependencies
-COPY package*.json .
+COPY package*.json ./
 
 # Install dependencies
-RUN npm install --legacy-peer-deps
+RUN npm install --production
 
 # Copy the rest of the application code
 COPY . .

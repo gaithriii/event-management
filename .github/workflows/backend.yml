@@ -42,11 +42,12 @@ jobs:
 
       # Deploy Docker container to Azure App Service
       - name: Deploy to Azure App Service
-        run: |
-          az webapp create --name event-management-backend --resource-group eventManagementResource --plan ASP-eventManagementResource-aae9
-          az webapp config container set --name event-management-backend --resource-group eventManagementResource --docker-custom-image-name gaithriharidasss/backend-backend:latest
-        # uses: azure/webapps-deploy@v2
-        # with:
-        #   app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
-        #   images: gaithriharidasss/backend-backend:latest
+        # run: |
+        #   az webapp create --name event-management-backend --resource-group eventManagementResource --plan ASP-eventManagementResource-aae9 \
+        #     --container-image-name backend
+        #   az webapp config container set --name event-management-backend --resource-group eventManagementResource --docker-custom-image-name gaithriharidasss/backend-backend:latest
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
+          images: gaithriharidasss/backend-backend:latest
 

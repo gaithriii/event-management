@@ -3,18 +3,18 @@ import { Typography, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 function Home() {
-  const navigation = useNavigate();
+  const navigate = useNavigate();
 
   const createEvent = (e) => {
     e.preventDefault();
 
-    navigation('/events/create');
+    navigate('/events/create');
   }
 
   const viewAllEvents = (e) => {
     e.preventDefault();
 
-    navigation('/events');
+    navigate('/events');
   }
 
   return (

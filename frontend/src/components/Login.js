@@ -8,7 +8,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [logged, setLogged] = useState(false);
-  const navigation = useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -23,9 +23,9 @@ const Login = () => {
 
   useEffect(() => {
     if (logged) {
-      navigation('/events/create');
+      navigate('/events/create');
     }
-  }, [logged]);
+  }, [logged, navigate]);
 
   return (
     <div style={{padding: "0 10px"}}>

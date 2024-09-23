@@ -5,7 +5,7 @@ import { Link, Typography, List, ListItem, ListItemText, Button } from '@mui/mat
 
 function EventList() {
   const [events, setEvents] = useState([]);
-  const navigation = useNavigate();
+  const navigate = useNavigate();
   
   useEffect(() => {
     const fetchEvents = async () => {
@@ -23,7 +23,7 @@ function EventList() {
   const backToHome = (e) => {
     e.preventDefault(); 
     
-    navigation('/');
+    navigate('/');
   }
 
   return (

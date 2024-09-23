@@ -9,7 +9,7 @@ function CreateEvent() {
   const [description, setDescription] = useState('');
   const [media, setMedia] = useState([]);
   const [submitted, setSubmitted] = useState(false);
-  const navigation = useNavigate();
+  const navigate = useNavigate();
 
   const handleFileChange = (e) => {
     setMedia(e.target.files);
@@ -52,17 +52,12 @@ function CreateEvent() {
       setMedia([]);
       setSubmitted(false);
     }
-
-    console.log('title', title)
-    console.log('description', description)
-    console.log('media', media)
-    console.log('submitted', submitted)
   }, [submitted]);
 
   const backToHome = (e) => {
     e.preventDefault(); 
     
-    navigation('/');
+    navigate('/');
   }
 
   return (

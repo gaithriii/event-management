@@ -11,7 +11,7 @@ function EventDetail() {
   const [event, setEvent] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [editDeleteRights, setEditDeleteRights] = useState(false);
-  const navigation = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchEvent = async () => {
@@ -43,7 +43,7 @@ function EventDetail() {
       const response = await axios.delete(`/api/events/${id}`);
       if (response.status === 200) {
         alert('Event deleted successfully. Redirecting you to Home.');
-        navigation('/');
+        navigate('/');
       }
     } catch (error) {
       alert('Error deleting event: ' + error.response.data);

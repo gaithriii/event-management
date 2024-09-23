@@ -9,7 +9,7 @@ router.post('/', upload.array('media'), async (req, res) => {
   const { title, description } = req.body;
   const media = req.files.map(file => file.path);
   try {
-    const event = new Event({ title, description, media, creator: req.headers['user-id'] }); //req.user.id --> TODO: must check why this is undefined
+    const event = new Event({ title, description, media, creator: req.headers['user-id'] });
     await event.save();
     res.status(201).send('Event created');
   } catch (error) {

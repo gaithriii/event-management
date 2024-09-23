@@ -29,8 +29,8 @@ jobs:
       - name: Build and Push Docker image
         working-directory: ./backend
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/gaithriharidasss/backend-backend:latest .
-          docker push ${{ secrets.DOCKER_USERNAME }}/gaithriharidasss/backend-backend:latest
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/backend-backend:latest .
+          docker push ${{ secrets.DOCKER_USERNAME }}/backend-backend:latest
         # uses: docker/build-push-action@v2
         # with:
         #   context: .

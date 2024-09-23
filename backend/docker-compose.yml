@@ -1,11 +1,10 @@
-# version: '3'
 services:
   backend:
     build: .
     ports:
       - '3000:3000'
     environment:
-      MONGO_URI: mongodb://mongo:27017/event-management
+      MONGO_URI: mongodb+srv://gaithriharidaswork:iPKab1tqjfFQ0m4F@eventmanagement.ow7rn.mongodb.net/?retryWrites=true&w=majority&appName=EventManagement
 
   mongo:
     image: mongo:latest
